@@ -2,7 +2,6 @@ import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
 import bcrypt from "bcryptjs";
-
 import connectDB from "./config/db.js";
 import userRoutes from "./routes/userRoutes.js";
 import pagosRoutes from "./routes/pagosRoutes.js";
@@ -16,6 +15,10 @@ dotenv.config();
 connectDB();
 
 const app = express();
+app.use(cors({
+  origin: "https://zonegym-frontend-production.up.railway.app",
+  credentials: true
+}));
 
 app.use(cors());
 app.use(express.json());
